@@ -46,7 +46,7 @@ new_exercise(4);
 // The print_r($week) should give:  Array ( [0] => mon [1] => tues [2] => wednes [3] => thurs [4] => fri [5] => satur [6] => sun )
 // Look up whats going wrong with this code, and then fix it, with ONE CHARACTER!
 
-foreach($week as $day) {
+foreach($week as &$day) {
     $days = substr($day, 0, strlen($day)-3);
 }
 
@@ -102,7 +102,7 @@ function randomHeroName()
     $hero_firstnames = ["captain", "doctor", "iron", "Hank", "ant", "Wasp", "the", "Hawk", "Spider", "Black", "Carol"];
     $hero_lastnames = ["America", "Strange", "man", "Pym", "girl", "hulk", "eye", "widow", "panther", "daredevil", "marvel"];
     $heroes = [$hero_firstnames, $hero_lastnames];
-    $randname = $heroes[rand(0,count($heroes))][rand(0, 10)];
+    $randname = $heroes[rand(0,count($heroes)-1)][rand(0, 10)];
 
     return $randname;
 }
@@ -118,7 +118,7 @@ function copyright($year) {
     echo "&copy; $year BeCode";
 }
 //print the copyright
-copyright(date("Y"));
+echo copyright(date("Y"));
 
 //-----------------------------------------------------------------------------------------------
 
@@ -126,9 +126,9 @@ copyright(date("Y"));
 
 new_exercise(8);
 function login(string $email, string $password) {
-    if($email == 'john@example.be' & $password == 'pocahontas') {
-        echo 'Welcome John';
-        return ' Smith <br/>';
+    if($email == 'john@example.be' && $password == 'pocahontas') {
+        echo 'Welcome John Smith <br/>';
+        
     }
     echo 'No access <br/>';
 }
@@ -157,16 +157,16 @@ function isLinkValid(string $link) {
             
         }
     }
-    echo 'Acceptable<br />';
+    return 'Acceptable<br />';
 }
 //invalid link
-isLinkValid('http://www.google.com/hack.pdf');
+echo isLinkValid('http://www.google.com/hack.pdf');
 //invalid link
-isLinkValid('https://google.com');
+echo isLinkValid('https://google.com');
 //VALID link
-isLinkValid('http://google.com');
+echo isLinkValid('http://google.com');
 //VALID link
-isLinkValid('http://google.com/test.txt');
+echo isLinkValid('http://google.com/test.txt');
 
 //-----------------------------------------------------------------------------------------------
 
